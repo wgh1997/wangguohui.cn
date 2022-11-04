@@ -1,0 +1,40 @@
+{
+  "short_name": "Mr • 王",
+  "name": "Mr • 王 – Code, design, and ideas from Portland, OR.",
+  "icons": [
+    {
+      "src": "/touch-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/touch-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "https://amirardalan.com",
+  "background_color": "#e4e9f8",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#262738",
+  "shortcuts": [
+    {
+      "name": "Mr • 王 Blog",
+      "short_name": "Amir",
+      "description": "Front-end developer, UI designer, and React enthusiast.",
+      "url": "https://amirardalan.com",
+      "icons": [{ "src": "/touch-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "description": "Mr • 王 Thumbnail",
+  "screenshots": [
+    {
+      "src": "/thumbnail.jpg",
+      "type": "image/png",
+      "sizes": "540x720"
+    }
+  ]
+}
