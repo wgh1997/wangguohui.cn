@@ -15,7 +15,7 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "https://amirardalan.com",
+  "start_url": "http://wangguohui.cn",
   "background_color": "#e4e9f8",
   "display": "standalone",
   "scope": "/",
@@ -25,7 +25,7 @@
       "name": "Mr • 王 Blog",
       "short_name": "Amir",
       "description": "Front-end developer, UI designer, and React enthusiast.",
-      "url": "https://amirardalan.com",
+      "url": "http://wangguohui.cn",
       "icons": [{ "src": "/touch-192.png", "sizes": "192x192" }]
     }
   ],

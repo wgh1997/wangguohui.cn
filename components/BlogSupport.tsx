@@ -194,7 +194,7 @@ export default function DonationCta() {
             <div className="left">
               <div className="copyContainer">
                 <h4>Did you enjoy this article?</h4>
-                <p>This project is <a href="https://github.com/amirardalan/amirardalan.com" target="_blank" rel="noopener noreferrer">open-source</a> and all of the content is free.</p>
+                <p>This project is <a href="https://github.com/wgh1997/wangguohui.cn" target="_blank" rel="noopener noreferrer">open-source</a> and all of the content is free.</p>
                 <p>If you liked this blog post consider supporting future content:</p>
               </div>
             </div>
@@ -212,11 +212,11 @@ export default function DonationCta() {
                     src="https://res.cloudinary.com/amir-ardalan/image/upload/v1666919421/Blog/amirardalan-eth-qr_qf4nym.png"
                     width={131}
                     height={131}
-                    alt="amirardalan.eth QR Code"
+                    alt="wangguohui.eth QR Code"
                   />
                 </div>
                 <div className="copyConfirmation">
-                  <p className="ethAddress">amirardalan.eth</p>
+                  <p className="ethAddress">wangguohui.eth</p>
                   <p className="successMessage">ETH address copied to clipboard ✅</p>
                 </div>
               </div>
