@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: init ssh, deploy
       with:
-          host: ${{ secrets.SERVER_IP }}
+          host: ${{ secrets.SERVER_IP }} 
           username: ubuntu
           key: ${{ secrets.SERVER_SSH_PRIV_KEY }}
           script: |
