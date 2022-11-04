@@ -114,7 +114,7 @@ export default function Home({ home, featuredPost, latestPost }) {
               <span className="typed" aria-hidden="true">
                 <TypingAnimation data={home.typed} />
               </span>
-              <h1>{home.title}2222</h1>
+              <h1>{home.title}</h1>
             </div>
             <div css={styleCtaButtons}>
               <CtaButtons items={home.items} />

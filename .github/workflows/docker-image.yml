@@ -1,4 +1,3 @@
-# This is a basic workflow to help you get started with Actions
 
 name: CI
 
@@ -21,4 +20,4 @@ jobs:
           host: ${{ secrets.ALIYUN_HOST }}
           username: ${{ secrets.ALIYUN_USER }}
           password: ${{ secrets.ALIYUN_PASSWORD }}
-          script: cd wangguohui.cn&&git pull origin master
+          script: cd wangguohui.cn&&git pull origin master&&sudo docker stop blog&&sudo docker rm blog&&sudo docker rmi blog&&sudo docker image build -t blog .&&sudo docker container run -d --name blog -p 80:3000 -it blog 
