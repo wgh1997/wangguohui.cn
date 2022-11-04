@@ -10,7 +10,7 @@
     "build": "next build",
     "build:config": "esbuild next.config.ts --bundle --outfile=next.config.js --platform=node --external:pnpapi --target=es2020 --minify",
     "start": "next start",
-    "export": "yarn build && next export -o _static"
+    "export": "yarn build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",

@@ -11,13 +11,12 @@ WORKDIR $APP_PATH
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 # 使用apk命令安装 nodejs 和 yarn
-RUN apk add --no-cache --update nodejs=16.17.1-r0 yarn=1.22.17-r0
+RUN apk add --no-cache --update nodejs=16.17.1-r0 yarn=1.22.17-r0 
 
 # 2. 基于基础镜像安装项目依赖
 FROM base AS install
 
 COPY package.json yarn.lock ./
-
 RUN yarn install 
 
 # 3. 基于基础镜像进行最终构建
@@ -28,9 +27,11 @@ COPY --from=install $APP_PATH/node_modules ./node_modules
 
 # 拷贝当前目录下的所有文件(除了.dockerignore里排除的)，都拷贝到工作目录下
 COPY . .
+RUN yarn add esbuild
 
-RUN yarn run build
+RUN yarn build
 
 EXPOSE 3000
+
 
 CMD ["yarn", "start"]
