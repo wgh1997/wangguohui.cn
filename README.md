@@ -2,32 +2,13 @@
 
 一个用 TypeScript 编写的 Next.js Markdown 博客。由[@wangguohui](https://github.com/wgh1997/)设计、建造和维护
 ### 使用技术栈
-[React.js](https://react.docschina.org/)
-[TypeScript](https://www.tslang.cn/)
-[Next.js](https://github.com/vercel/next.js/)
-[Reduxjs-toolkit](https://redux-toolkit.js.org)
-[React-redux](https://react-redux.js.org/)
-[Next Auth](https://next-auth.js.org/)  
-[react-markdown](https://github.com/remarkjs/react-markdown)  
-
-### 环境变量
-
-# [amirardalan.com](https://amirardalan.com)
-
-A Next.js Markdown Blog and CMS written in TypeScript. Designed, built, and maintained by [@amirardalan](https://github.com/amirardalan)
-
-### Primarily Built with:
-
-[Next.js](https://github.com/vercel/next.js/)  
-[Next Auth](https://next-auth.js.org/)  
-[react-markdown](https://github.com/remarkjs/react-markdown)  
-[Prisma](https://github.com/prisma/prisma)  
-[SWR](https://github.com/vercel/swr)  
-[Emotion](https://github.com/emotion-js/emotion)
-
-### Who is this for?
-This is my personal portfolio and blog. You may find the CMS portion useful. It is a modern and lightweight alternative to a Wordpress blog. This application utilizes bleeding edge features from Next.js and React.
-
+- [React.js](https://react.docschina.org/)
+- [TypeScript](https://www.tslang.cn/)
+- [Next.js](https://github.com/vercel/next.js/)
+- [Reduxjs-toolkit](https://redux-toolkit.js.org)
+- [React-redux](https://react-redux.js.org/)
+- [Next Auth](https://next-auth.js.org/)  
+- [react-markdown](https://github.com/remarkjs/react-markdown)  
 
 ### 环境变量
 
@@ -38,41 +19,11 @@ This is my personal portfolio and blog. You may find the CMS portion useful. It 
 ```
 //.env
 
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_USER_EMAIL=875193607@qq.com
-
-
-NEXT_AUTH_SECRET=
-GITHUB_SECRET=
-GITHUB_ID=
-
-NEXT_PUBLIC_REVALIDATE_SECRET=
+NEXT_PUBLIC_SITE_URL=http://localhost:3000   #http://localhost:3000为开发，设置http://wangghuohui.cn为生产
+NEXT_PUBLIC_USER_EMAIL=875193607@qq.com # 您的电子邮件地址，用于身份验证和可选的关于或联系页面
 NEXT_PUBLIC_OG_IMAGE_URL=https://ogimage.yourSite.vercel.app
-NEXT_PUBLIC_TIMEZONE=America/Los_Angeles
+NEXT_PUBLIC_TIMEZONE=America/Los_Angeles # 时区
 ```
-
-`NEXT_PUBLIC_SITE_URL`
-Leave as `http://localhost:3000` for Development, set as `http://wangghuohui.cn` for Production  
-
-`NEXT_PUBLIC_USER_EMAIL`
-Your email address, used for authentication and optionally your about or contact page.  
-
-`NEXT_AUTH_SECRET`
-[Generate a secret](https://next-auth.js.org/configuration/options#nextauth_secret) for Next Auth  
-
-`GITHUB_SECRET`
-For GitHub oAuth with Next Auth, see [GitHub Developer App Docs](https://docs.github.com/en/developers/apps/getting-started-with-apps/setting-up-your-development-environment-to-create-a-github-app)
-
-`GITHUB_ID`
-Your GitHub developer app ID, [GitHub Developer App Docs](https://docs.github.com/en/developers/apps/getting-started-with-apps/setting-up-your-development-environment-to-create-a-github-app)  
-
-`NEXT_PUBLIC_REVALIDATE_SECRET`
-Generate a secret for use with Next [On-Demand Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#on-demand-revalidation-beta)  
-
-`NEXT_PUBLIC_OG_IMAGE_URL`
-Create an [OG Image Service](https://github.com/vercel/og-image) and set this to the URL of your service app. [Further reading](#dynamically-generate-blog-og-images)  
-
-`NEXT_PUBLIC_TIMEZONE`: Example: `America/Los_Angeles`. Set this to your local timezone for your blog posts to display the correct date and time. [Full List of IANA Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)   
 
 ---
 
@@ -102,7 +53,7 @@ yarn start
 
 
 ### 基于Docker 打包部署
-- 编写`Dockerfile` 文件
+-  编写`Dockerfile` 文件
 ```Dockerfile
 # 1. 构建基础镜像
 FROM alpine:3.15 AS base
