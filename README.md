@@ -101,7 +101,7 @@ docker image build -t blog .
 ```
 - 启动容器
 ```bash
-docker container run -d -p 80:3000 -it blog --blog
+docker container run -d --name blog -p 80:3000 -it blog 
 # -d： 后台运行容器
 # -p: 前面80是本机服务器开放端口，后面3000是容器暴露出来的端口
 # --name：给容器命名

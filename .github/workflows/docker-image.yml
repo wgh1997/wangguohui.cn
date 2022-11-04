@@ -21,4 +21,4 @@ jobs:
           host: ${{ secrets.ALIYUN_HOST }}
           username: ${{ secrets.ALIYUN_USER }}
           password: ${{ secrets.ALIYUN_PASSWORD }}
-          script: cd wangguohui.cn&&git pull origin master&&sudo docker image build -t blog .&&sudo docker restart blog
+          script: cd wangguohui.cn&&git pull origin master
