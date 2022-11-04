@@ -106,9 +106,51 @@ docker container run -d --name blog -p 80:3000 -it blog
 # -p: 前面80是本机服务器开放端口，后面3000是容器暴露出来的端口
 # --name：给容器命名
 ```
+
+
+### `github actions`自动部署
+手动部署太麻烦我们这里采用`github actions`的方式自动化部署项目
+这个需要在Settings/Secrets/Actions 添加secrets[key]
+- ALIYUN_HOST 服务器ip
+- ALIYUN_USER 登录服务器名称
+- ALIYUN_PASSWORD 登录服务器密码 
+
+```yml
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v2
+          
+      # 使用SSH远程连接
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.ALIYUN_HOST }}
+          username: ${{ secrets.ALIYUN_USER }}
+          password: ${{ secrets.ALIYUN_PASSWORD }}
+          script: cd wangguohui.cn&&git pull origin master&&sudo docker stop blog&&sudo docker rm blog&&sudo docker rmi blog&&sudo docker image build -t blog .&&sudo docker container run -d --name blog -p 80:3000 -it blog 
+
+```
+script 命令含义
+- cd wangguohui.cn 进入到  储存页面目录
+- git pull origin master pull 最新代码
+- sudo docker stop blog 停止前端docker容器
+- sudo docker rm blog 删除前端docker容器
+- sudo docker rmi blog 删除前端docker镜像
+- sudo docker image build -t blog . 打包镜像
+- sudo docker container run -d --name blog -p 80:3000 -it blog 启动容器
 ---
 
-## 降价功能:
+## 功能:
 
 - [Next/Image Component](#nextimage-component)
 - [Code Line Highlighting](#code-line-highlighting)
