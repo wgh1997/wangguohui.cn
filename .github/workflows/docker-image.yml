@@ -1,27 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-on:
-  push:
-    branches: [ master ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Check Out
-        uses: actions/checkout@v2
-          
-      # 使用SSH远程连接
-      - name: SSH Remote Commands
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.ALIYUN_HOST }}
-          username: ${{ secrets.ALIYUN_USER }}
-          password: ${{ secrets.ALIYUN_PASSWORD }}
-          # This is a basic workflow to help you get started with Actions
 
 name: CI
 
