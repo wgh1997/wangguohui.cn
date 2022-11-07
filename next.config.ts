@@ -3,12 +3,12 @@ module.exports = {
   swcMinify: false,
   async redirects() {
     return [
-      { source: '/media', destination: `http://0.0.0.0:8001/media`,permanent:true},
+      { source: '/media', destination: `http://42.192.148.228:8001/media`,permanent:true},
     ]
   },
   images: {
     domains: [
-      'http://0.0.0.0:8001', // Cloudinary
+      'http://42.192.148.228:8001', // Cloudinary
     ]
   },
 }
