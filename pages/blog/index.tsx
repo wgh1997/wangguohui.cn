@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import Container from "@/components/Container";
 import BlogStyles from "@/components/BlogStyles";
 import BlogPostFilter from "@/components/BlogPostFilter";
@@ -12,10 +12,8 @@ import { useMidgard } from '../../store/bilog/hooks'
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const classifyData = await getClassify();
     return {
       props: {
-        classifyData: classifyData.data.data.datalist,
         blog: blogContent,
       },
     };
@@ -23,17 +21,22 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
       props: {
         blog: blogContent,
-        classifyData: [],
       },
     };
   }
 };
 
-const Blog = ({ blog, feed, classifyData }) => {
+const Blog = ({ blog, feed }) => {
   const blogList = useSelector(blogCount);
   const { getTxData} = useMidgard()
+  const [classifyData,setClassifyData]= useState([])
+  const ongetClassify = async()=>{
+    const {data} = await getClassify();
+    setClassifyData(data.data.datalist)
+  }
   useEffect(() => {
     getTxData({ pageNum: 1, pageSize: 10 })
+    ongetClassify()
   }, []);
   return (
     <Container title={blog.meta.title} description={blog.meta.description}>

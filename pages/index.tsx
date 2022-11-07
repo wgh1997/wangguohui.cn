@@ -1,4 +1,4 @@
-// import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import { homeContent } from "@/data/content";
 import Container from "@/components/Container";
@@ -16,38 +16,47 @@ const CanvasLoader = dynamic(() => import("@/components/CanvasLoader"), {
 });
 
 import { GetStaticProps } from "next";
-
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data } = await getArticles({
-      pageNum: 1,
-      pageSize: 1,
-      lately: "1",
-    });
     const latestPost = "222";
-    const featuredPost = {
-      slug: data.data.datalist[0].id,
-      title: data.data.datalist[0].article_name,
-      teaser: data.data.datalist[0].article_name,
-    };
     return {
       props: {
         home: homeContent,
-        featuredPost,
         latestPost: latestPost,
       },
     };
   } catch {
-    return { props: { home: homeContent } };
+    return { notFound: true };
+    // return { props: { home: homeContent } };
   }
 };
 
-export default function Home({ home, featuredPost, latestPost }) {
-  // const dispatch = useDispatch();
-  // const { getTxData } = useMidgard();
-  // useEffect(() => {
-  //   dispatch(getTxData({ pageNum: 1, pageSize: 1, lately: 1 }));
-  // }, []);
+export default function Home({ home, latestPost }) {
+  const [featuredPost, setFeaturedPost] = useState({
+    slug: "",
+    title: "",
+    teaser: "",
+  });
+  const ongetArticles = async () => {
+    try {
+      const { data } = await getArticles({
+        pageNum: 1,
+        pageSize: 1,
+        lately: "1",
+      });
+      const dataList = {
+        slug: data.data.datalist[0].id,
+        title: data.data.datalist[0].article_name,
+        teaser: data.data.datalist[0].article_name,
+      };
+      setFeaturedPost(dataList);
+    } catch {
+      setFeaturedPost(featuredPost);
+    }
+  };
+  useEffect(() => {
+    ongetArticles();
+  }, []);
   const styleMain = css({
     display: "flex",
     "@media (max-width: 890px)": {
