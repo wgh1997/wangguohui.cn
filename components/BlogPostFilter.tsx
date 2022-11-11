@@ -21,6 +21,9 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
     li: {
       display: "inline",
       marginRight: "1.8rem",
+      ".category":{
+        // textTransform: "initial",
+      }
     },
     "&::-webkit-scrollbar": {
       display: "none",
@@ -75,6 +78,10 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
 
   const handleClearFilters = () => {
     setSearch("");
+    getTxData({
+      pageNum: 1,
+      pageSize: 10,
+    });
     scrollToTop();
   };
 
@@ -124,12 +131,19 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
       return filteredPosts.map((post: Record<string, string>) => (
         <article className="publishedPost" key={post.id}>
           <button
-            onClick={() => handleCategoryLink(post.article_type)}
-            onKeyPress={() => handleCategoryLink(post.article_type)}
+            onClick={() => {
+              getTxData({
+                pageNum: 1,
+                pageSize: 10,
+                article_type: post.article_type,
+              });
+              handleCategoryLink(post.type);
+            }}
+            onKeyPress={() => handleCategoryLink(post.type)}
             className="category"
-            aria-label={post.article_type}
+            aria-label={post.type}
           >
-            {post.article_type}
+            {post.type}
           </button>
           <BlogPost post={post} />
         </article>
@@ -140,7 +154,12 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
           {blog.search.noresult}{" "}
           {feed.length > 0 ? (
             <button
-              onClick={() => setSearch("")}
+              onClick={() => {
+                getTxData({
+                  pageNum: 1,
+                  pageSize: 10,
+                });
+                setSearch("")}}
               onKeyPress={() => setSearch("")}
               aria-label={blog.search.clear}
             >
@@ -171,7 +190,12 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
     } else {
       return (
         <button
-          onClick={() => setSearch("")}
+          onClick={() => {
+            getTxData({
+              pageNum: 1,
+              pageSize: 10,
+            });
+            setSearch("")}}
           onKeyPress={() => setSearch("")}
           className="clearSearch"
         >
@@ -185,7 +209,13 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
     if (search[0] === "#" && filteredPosts.length > 0) {
       return (
         <button
-          onClick={() => handleClearFilters()}
+          onClick={() => {
+            getTxData({
+              pageNum: 1,
+              pageSize: 10,
+            });
+            handleClearFilters();
+          }}
           onKeyPress={() => handleClearFilters()}
           aria-label="Clear Filter"
         >
@@ -210,10 +240,10 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
           <li>
             <button
               onClick={() => {
-                  getTxData({
-                    pageNum: 1,
-                    pageSize: 10,
-                  })
+                getTxData({
+                  pageNum: 1,
+                  pageSize: 10,
+                });
                 setSearch("");
               }}
               onKeyPress={() => setSearch("")}
@@ -227,11 +257,11 @@ const BlogPostFilter = ({ blog, feed, classify }) => {
             <li key={index}>
               <button
                 onClick={() => {
-                    getTxData({
-                      pageNum: 1,
-                      pageSize: 10,
-                      article_type: category.id,
-                    })
+                  getTxData({
+                    pageNum: 1,
+                    pageSize: 10,
+                    article_type: category.id,
+                  });
                   handleCategoryLink(category.name);
                 }}
                 onKeyPress={() => handleCategoryLink(category.name)}

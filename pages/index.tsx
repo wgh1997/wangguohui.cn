@@ -47,7 +47,7 @@ export default function Home({ home, latestPost }) {
       const dataList = {
         slug: data.data.datalist[0].id,
         title: data.data.datalist[0].article_name,
-        teaser: data.data.datalist[0].article_name,
+        teaser: data.data.datalist[0].tags,
       };
       setFeaturedPost(dataList);
     } catch {

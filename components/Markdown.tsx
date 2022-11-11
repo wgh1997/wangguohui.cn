@@ -17,6 +17,9 @@ import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
 import lua from 'react-syntax-highlighter/dist/cjs/languages/prism/lua'
 import python from 'react-syntax-highlighter/dist/cjs/languages/prism/python'
+import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
+
+//javascript
 
 
 
@@ -28,6 +31,8 @@ SyntaxHighlighter.registerLanguage('markdown', markdown)
 SyntaxHighlighter.registerLanguage('json', json)
 SyntaxHighlighter.registerLanguage('lua', lua)
 SyntaxHighlighter.registerLanguage('python', python)
+SyntaxHighlighter.registerLanguage('javascript', javascript)
+
 
 
 

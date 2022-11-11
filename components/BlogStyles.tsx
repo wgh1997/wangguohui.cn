@@ -9,11 +9,18 @@ const blogStyles = css({
       display: 'flex',
       flexDirection: 'row',
     },
+    '.category_span':{
+      marginRight: '1rem',
+      fontFamily: 'var(--font-primary)',
+      fontSize: 12,
+      // textTransform: 'uppercase',
+      color: 'var(--color-primary)',
+    },
     '.category': {
       marginBottom: '.5rem',
       fontFamily: 'var(--font-primary)',
       fontSize: 12,
-      textTransform: 'uppercase',
+      // textTransform: 'uppercase',
       color: 'var(--color-primary)',
       textDecoration: 'none',
       '&.featured': {

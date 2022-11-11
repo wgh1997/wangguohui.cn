@@ -148,6 +148,7 @@ export const aboutContent = {
   experience: {
     title: '经验',
     items: [
+      ''
     ],
   },
   availability: {
@@ -406,7 +407,7 @@ export const footer = {
   headings: {
     nav: 'Explore',
     social: 'Connect',
-    poweredby: '技术',
+    poweredby: 'Technology',
     contact: 'Contact',
   },
   poweredby: [

@@ -105,13 +105,13 @@ const Post = ({ blogPost, admin, post, feed }) => {
         },
       },
       ".teaser": {
-        marginBottom: "2.5rem",
+        marginBottom: "0.5rem",
         fontFamily: "var(--font-tertiary)",
         fontSize: 22,
-        lineHeight: "1.5rem",
+        lineHeight: "0.5rem",
         color: "var(--color-gray)",
         "@media(max-width: 768px)": {
-          marginBottom: "2rem",
+          marginBottom: "1rem",
           fontSize: 19,
         },
       },
@@ -258,6 +258,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
         listStyle: "outside",
         margin: "0 0 .5rem 1rem",
         paddingLeft: ".5rem",
+        wordBreak: 'break-all',
         "&.task-list-item": {
           fontFamily: "var(--font-primary)",
           fontSize: 15,
@@ -333,7 +334,7 @@ const Post = ({ blogPost, admin, post, feed }) => {
     isPublished ||
     (session && session.user.email === process.env.NEXT_PUBLIC_USER_EMAIL);
 
-  const isFeatured = post.featured;
+  const isFeatured = post.article_topping==0;
   const latestPostID = feed[feed?.length - 1].id || "";
   const latestPost = latestPostID === post.id;
   const isEdited =
@@ -346,7 +347,6 @@ const Post = ({ blogPost, admin, post, feed }) => {
 
   const [fetchStatus, setFetchStatus] = useFetchStatus();
   const isFetching = fetchStatus;
-
 
   // Set OG Image for blog posts. Use first image from post, otherwise dynamically generate one.
   const hasImage = post.article_body
@@ -367,25 +367,27 @@ const Post = ({ blogPost, admin, post, feed }) => {
       <article className="post postFull">
         <div className="categoryWrapper">
           {isFeatured ? (
-            <div
-              className="category featured full"
-              aria-label="Featured Post"
-            >
+            <div className="category featured full" aria-label="Featured Post">
               热门
             </div>
-           ) : null}
+          ) : null}
           <div className="category full" aria-label={post.article_type}>
             {post.article_type}
           </div>
         </div>
         <h1 aria-label={`${title}`}>{title}</h1>
-        <p className="teaser">{'描述'}</p>
-
+        <p className="teaser">
+          {post.article_tags.map((item) => {
+            return <span key={item.id} className="category_span">{item.name}</span>;
+          })}
+        </p>
         <div
           className="postDetails"
-          aria-label={isEdited
-            ? `${editDate} • ${postReadTime}`
-            : `${publishDate} • ${postReadTime}`}
+          aria-label={
+            isEdited
+              ? `${editDate} • ${postReadTime}`
+              : `${publishDate} • ${postReadTime}`
+          }
         >
           <span className="author">
             By <span>{"wangguohui"}</span>
@@ -401,7 +403,6 @@ const Post = ({ blogPost, admin, post, feed }) => {
         </div>
 
         <Markdown markdown={post} />
-
       </article>
       {/* <BlogNavigation feed={feed} post={post} isPublished={isPublished} /> */}
     </div>

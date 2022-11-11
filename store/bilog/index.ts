@@ -15,14 +15,15 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: "app",
+  name: "blog",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(
       midgardActions.fetchHomeMultidataAction.fulfilled,
       (state, { payload ,meta}) => {
-        const { data } = payload.data;
+        const { data ,code } = payload.data;
+        if(code===1) return
         const {pageSize,pageNum} = meta.arg
         state.initialState.blogList = {
           datalist: data.datalist,

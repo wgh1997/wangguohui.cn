@@ -9,6 +9,7 @@ module.exports = {
   images: {
     domains: [
       'http://42.192.148.228:8001', // Cloudinary
+      'https://p9-juejin.byteimg.com/'
     ]
   },
 }

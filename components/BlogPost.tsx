@@ -2,9 +2,7 @@ import Link from 'next/link'
 import formatDate from '@/utils/formatDate'
 import calculateReadTime from '@/utils/calculateReadTime'
 
-
 const Post = ({ post }) => {
-
   const publishDate = formatDate(post.create_time)
   const postReadTime = calculateReadTime(post.article_body)
 
@@ -26,7 +24,7 @@ const Post = ({ post }) => {
             <span className="readTime">{postReadTime}</span>
           </div>
         </div>
-      <p className="teaser">{post.article_name}</p>
+      <p className="teaser">{post.tags}</p>
     </div>
   )
 }
