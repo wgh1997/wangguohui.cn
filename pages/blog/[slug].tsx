@@ -371,8 +371,8 @@ const Post = ({ blogPost, admin, post, feed }) => {
               热门
             </div>
           ) : null}
-          <div className="category full" aria-label={post.article_type}>
-            {post.article_type}
+          <div className="category full" aria-label={post.type}>
+            {post.type}
           </div>
         </div>
         <h1 aria-label={`${title}`}>{title}</h1>

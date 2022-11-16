@@ -39,7 +39,7 @@ export const ContactButton = ({ content }) => {
   const [emailCopied, setEmailCopied] = useState(false)
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_USER_EMAIL)
+    navigator.clipboard?.writeText(process.env.NEXT_PUBLIC_USER_EMAIL)
     setEmailCopied(true)
     setTimeout(() => {
       setEmailCopied(false)
