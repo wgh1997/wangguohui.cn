@@ -464,7 +464,7 @@ export const footer = {
    
   ],
   copyright: {
-    text: '©',
+    text: '京ICP备2022032024号-1   ',
     name: 'Mr • 王',
   },
 }
